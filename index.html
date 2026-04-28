@@ -85,12 +85,12 @@
 <div class="app">
   <header>
     <h1>Calisthenics Trainings-App</h1>
-    <p class="subtitle">Dein 4-Wochen-Basisplan als Schritt-fuer-Schritt-Training mit Saetzen, Wiederholungen, Haltezeiten, Pausen und Erklaertexten.</p>
+    <p class="subtitle">Dein 4-Wochen-Basisplan als Schritt-für-Schritt-Training mit Sätzen, Wiederholungen, Haltezeiten, Pausen und Erklärtexten.</p>
     <div class="topbar">
-      <div class="pill">3x pro Woche</div>
-      <div class="pill">30-45 Minuten</div>
+      <div class="pill">3× pro Woche</div>
+      <div class="pill">30–45 Minuten</div>
       <div class="pill">zu Hause</div>
-      <div class="pill">Anfaengerfreundlich</div>
+      <div class="pill">Anfängerfreundlich</div>
     </div>
   </header>
 
@@ -102,8 +102,8 @@
 
   <section id="start" class="section active">
     <div class="card">
-      <h2 style="margin:0 0 8px">Training auswaehlen</h2>
-      <p class="small">Fuer Dienstag, Freitag und Sonntag ist derselbe Basisplan hinterlegt. Die Minimum-Version ist fuer Tage gedacht, an denen wenig Zeit oder Energie da ist.</p>
+      <h2 style="margin:0 0 8px">Training auswählen</h2>
+      <p class="small">Für Dienstag, Freitag und Sonntag ist derselbe Basisplan hinterlegt. Die Minimum-Version ist für Tage gedacht, an denen wenig Zeit oder Energie da ist.</p>
       <div class="mode-card">
         <div class="card" style="box-shadow:none;margin:0">
           <h3 style="margin:0 0 6px">Basisplan</h3>
@@ -114,7 +114,7 @@
         </div>
         <div class="card" style="box-shadow:none;margin:0">
           <h3 style="margin:0 0 6px">10-Minuten-Minimum</h3>
-          <p class="small">Kurzversion, wenn du sonst gar nicht trainieren wuerdest. Besser kurz sauber als komplett ausfallen lassen.</p>
+          <p class="small">Kurzversion, wenn du sonst gar nicht trainieren würdest. Besser kurz sauber als komplett ausfallen lassen.</p>
           <div class="workout-start">
             <button class="btn-secondary" onclick="startWorkout('minimum')">Minimum starten</button>
           </div>
@@ -123,7 +123,7 @@
     </div>
 
     <div class="card">
-      <h2 style="margin:0 0 8px">Uebersicht Basisplan</h2>
+      <h2 style="margin:0 0 8px">Übersicht Basisplan</h2>
       <div id="overview" class="exercise-list"></div>
     </div>
   </section>
@@ -150,39 +150,39 @@
       <p class="small">Die Daten werden nur lokal in diesem Browser gespeichert.</p>
       <div id="historyList"></div>
       <div class="controls">
-        <button class="btn-danger" onclick="clearHistory()">Verlauf loeschen</button>
+        <button class="btn-danger" onclick="clearHistory()">Verlauf löschen</button>
       </div>
     </div>
   </section>
 
-  <p class="footer-note">Version 2.0 - jetzt mit Uebungsbildern - persoenlicher Trainingsflow</p>
+  <p class="footer-note">Version 2.1 · mit Übungsbildern · persönlicher Trainingsflow</p>
 </div>
 
 <script>
 const fullPlan = [
-  {cat:"Warm-up", name:"Handgelenke mobilisieren", type:"timer", duration:60, target:"30-60 Sekunden", rest:0, img:"images/warmup.png", text:"Bewege die Handgelenke sanft in beide Richtungen. Es soll mobilisieren, nicht schmerzen. Druck langsam steigern."},
-  {cat:"Warm-up", name:"Schulter-/Armkreisen", type:"timer", duration:60, target:"30-60 Sekunden", rest:0, img:"images/warmup.png", text:"Kreise locker und kontrolliert mit den Armen. Schultern nicht verkrampfen, gleichmaessig atmen."},
-  {cat:"Warm-up", name:"Cat-Cow", type:"reps", sets:1, min:8, max:10, rest:0, img:"images/warmup.png", text:"Im Vierfuesslerstand Ruecken rund machen, danach Brust oeffnen. Langsam bewegen und die Wirbelsaeule bewusst mobilisieren."},
-  {cat:"Warm-up", name:"Scapula Push-ups", type:"reps", sets:2, min:8, max:8, rest:30, img:"images/warmup.png", text:"Arme bleiben gestreckt. Bewege nur die Schulterblaetter: erst aktiv wegdruecken, dann kontrolliert zurueck."},
-  {cat:"Warm-up", name:"Lockere Kniebeugen", type:"reps", sets:1, min:10, max:10, rest:0, img:"images/warmup.png", text:"Ruhige Kniebeugen zum Aufwaermen. Nicht ans Limit gehen, nur Koerpertemperatur und Beweglichkeit erhoehen."},
-  {cat:"Skill", name:"Wall Walk Anfaenger-Version", type:"hold", sets:3, duration:15, range:"10-20 Sekunden", rest:75, img:"images/wallwalk.png", text:"Fuesse an die Wand, Haende bleiben ruhig. Nur so weit hochlaufen, wie du Kontrolle haeltst. Kopf neutral, Bauch und Po leicht anspannen."},
-  {cat:"Kraft", name:"Band-Klimmzuege oder negative Klimmzuege", type:"reps", sets:3, min:3, max:5, rest:120, img:"images/pullup.png", text:"Schulterblaetter zuerst aktivieren. Bei Negativen langsam absenken. Qualitaet ist wichtiger als mehr Wiederholungen."},
-  {cat:"Kraft", name:"Erhoehte Liegestuetze", type:"reps", sets:3, min:5, max:8, rest:90, img:"images/incline_pushup.png", text:"Koerper bleibt wie ein Brett. Wenn 3x8 sauber gehen, waehle beim naechsten Training eine niedrigere Erhoehung."},
-  {cat:"Kraft", name:"Sitzendes Band-Rudern", type:"reps", sets:3, min:8, max:12, rest:90, img:"images/seated_row.png", text:"Band um die Fuesse, Ruecken aufrecht. Ziehe die Ellenbogen Richtung Bauch/untere Rippen nach hinten. Schultern bleiben tief."},
-  {cat:"Kraft", name:"Split Squats oder langsame Kniebeugen", type:"sideReps", sets:3, min:8, max:10, rest:75, img:"images/split_squat.png", text:"Wenn normale Kniebeugen zu leicht sind: Split Squats. Kontrolliert runter, stabil hoch. Vorderes Bein arbeitet, Oberkoerper bleibt aufrecht."},
-  {cat:"Kraft", name:"Marching Glute Bridge", type:"sideReps", sets:2, min:8, max:10, rest:60, img:"images/marching_bridge.png", text:"Becken oben stabil halten und abwechselnd einen Fuss leicht anheben. Po anspannen, nicht ins Hohlkreuz druecken."},
-  {cat:"Core", name:"Tuck Hollow Hold oder Dead Bug", type:"hold", sets:3, duration:15, range:"10-20 Sekunden", rest:60, img:"images/tuck_hollow.png", text:"Unterer Ruecken bleibt am Boden. Wenn eine Luecke entsteht, leichter machen: Knie naeher zur Brust oder Dead Bug waehlen."},
-  {cat:"Core", name:"Plank", type:"hold", sets:2, duration:30, range:"20-40 Sekunden", rest:60, img:"images/plank.png", text:"Bauch und Po anspannen. Schulterblaetter aktiv, Koerper bleibt gerade. Satz beenden, sobald die Haltung kippt."}
+  {cat:"Warm-up", name:"Handgelenke mobilisieren", type:"timer", duration:60, target:"30–60 Sekunden", rest:0, img:"images/warmup.png", text:"Bewege die Handgelenke sanft in beide Richtungen. Es soll mobilisieren, nicht schmerzen. Druck langsam steigern."},
+  {cat:"Warm-up", name:"Schulter-/Armkreisen", type:"timer", duration:60, target:"30–60 Sekunden", rest:0, img:"images/warmup.png", text:"Kreise locker und kontrolliert mit den Armen. Schultern nicht verkrampfen, gleichmäßig atmen."},
+  {cat:"Warm-up", name:"Cat-Cow", type:"reps", sets:1, min:8, max:10, rest:0, img:"images/warmup.png", text:"Im Vierfüßlerstand Rücken rund machen, danach Brust öffnen. Langsam bewegen und die Wirbelsaeule bewusst mobilisieren."},
+  {cat:"Warm-up", name:"Scapula Push-ups", type:"reps", sets:2, min:8, max:8, rest:30, img:"images/warmup.png", text:"Arme bleiben gestreckt. Bewege nur die Schulterblätter: erst aktiv wegdrücken, dann kontrolliert zurück."},
+  {cat:"Warm-up", name:"Lockere Kniebeugen", type:"reps", sets:1, min:10, max:10, rest:0, img:"images/warmup.png", text:"Ruhige Kniebeugen zum Aufwärmen. Nicht ans Limit gehen, nur Körpertemperatur und Beweglichkeit erhöhen."},
+  {cat:"Skill", name:"Wall Walk Anfänger-Version", type:"hold", sets:3, duration:15, range:"10–20 Sekunden", rest:75, img:"images/wallwalk.png", text:"Füße an die Wand, Hände bleiben ruhig. Nur so weit hochlaufen, wie du Kontrolle hältst. Kopf neutral, Bauch und Po leicht anspannen."},
+  {cat:"Kraft", name:"Band-Klimmzüge oder negative Klimmzüge", type:"reps", sets:3, min:3, max:5, rest:120, img:"images/pullup.png", text:"Schulterblätter zuerst aktivieren. Bei Negativen langsam absenken. Qualität ist wichtiger als mehr Wiederholungen."},
+  {cat:"Kraft", name:"Erhöhte Liegestütze", type:"reps", sets:3, min:5, max:8, rest:90, img:"images/incline_pushup.png", text:"Körper bleibt wie ein Brett. Wenn 3x8 sauber gehen, wähle beim nächsten Training eine niedrigere Erhöhung."},
+  {cat:"Kraft", name:"Sitzendes Band-Rudern", type:"reps", sets:3, min:8, max:12, rest:90, img:"images/seated_row.png", text:"Band um die Füße, Rücken aufrecht. Ziehe die Ellenbogen Richtung Bauch/untere Rippen nach hinten. Schultern bleiben tief."},
+  {cat:"Kraft", name:"Split Squats oder langsame Kniebeugen", type:"sideReps", sets:3, min:8, max:10, rest:75, img:"images/split_squat.png", text:"Wenn normale Kniebeugen zu leicht sind: Split Squats. Kontrolliert runter, stabil hoch. Vorderes Bein arbeitet, Oberkörper bleibt aufrecht."},
+  {cat:"Kraft", name:"Marching Glute Bridge", type:"sideReps", sets:2, min:8, max:10, rest:60, img:"images/marching_bridge.png", text:"Becken oben stabil halten und abwechselnd einen Fuß leicht anheben. Po anspannen, nicht ins Hohlkreuz drücken."},
+  {cat:"Core", name:"Tuck Hollow Hold oder Dead Bug", type:"hold", sets:3, duration:15, range:"10–20 Sekunden", rest:60, img:"images/tuck_hollow.png", text:"Unterer Rücken bleibt am Boden. Wenn eine Luecke entsteht, leichter machen: Knie naeher zur Brust oder Dead Bug wählen."},
+  {cat:"Core", name:"Plank", type:"hold", sets:2, duration:30, range:"20–40 Sekunden", rest:60, img:"images/plank.png", text:"Bauch und Po anspannen. Schulterblätter aktiv, Körper bleibt gerade. Satz beenden, sobald die Haltung kippt."}
 ];
 
 const minimumPlan = [
   {cat:"Warm-up", name:"Handgelenke + Schultern", type:"timer", duration:60, target:"1 Minute", rest:0, img:"images/warmup.png", text:"Kurz mobilisieren: Handgelenke kreisen, Schultern lockern, Arme bewegen."},
-  {cat:"Skill", name:"Wall Walk Anfaenger-Version", type:"hold", sets:2, duration:15, range:"10-20 Sekunden", rest:45, img:"images/wallwalk.png", text:"Nur kontrollierte Versuche. Kein Hohlkreuz, Kopf neutral."},
-  {cat:"Kraft", name:"Erhoehte Liegestuetze", type:"reps", sets:2, min:5, max:8, rest:60, img:"images/incline_pushup.png", text:"Saubere Wiederholungen, Koerper bleibt stabil."},
-  {cat:"Kraft", name:"Band-Klimmzuege oder negative Klimmzuege", type:"reps", sets:2, min:3, max:5, rest:90, img:"images/pullup.png", text:"Langsam und kontrolliert. Schulterblaetter aktivieren."},
+  {cat:"Skill", name:"Wall Walk Anfänger-Version", type:"hold", sets:2, duration:15, range:"10–20 Sekunden", rest:45, img:"images/wallwalk.png", text:"Nur kontrollierte Versuche. Kein Hohlkreuz, Kopf neutral."},
+  {cat:"Kraft", name:"Erhöhte Liegestütze", type:"reps", sets:2, min:5, max:8, rest:60, img:"images/incline_pushup.png", text:"Saubere Wiederholungen, Körper bleibt stabil."},
+  {cat:"Kraft", name:"Band-Klimmzüge oder negative Klimmzüge", type:"reps", sets:2, min:3, max:5, rest:90, img:"images/pullup.png", text:"Langsam und kontrolliert. Schulterblätter aktivieren."},
   {cat:"Kraft", name:"Sitzendes Band-Rudern", type:"reps", sets:1, min:8, max:12, rest:45, img:"images/seated_row.png", text:"Ellenbogen Richtung Bauch/untere Rippen ziehen, Schultern tief lassen."},
   {cat:"Beine", name:"Kniebeugen oder Split Squats", type:"reps", sets:1, min:10, max:15, rest:30, img:"images/split_squat.png", text:"Ruhig und sauber, nicht hetzen."},
-  {cat:"Core", name:"Plank oder Tuck Hollow Hold", type:"hold", sets:1, duration:30, range:"20-40 Sekunden", rest:0, img:"images/plank.png", text:"Waehle die Variante, die du sauber halten kannst."}
+  {cat:"Core", name:"Plank oder Tuck Hollow Hold", type:"hold", sets:1, duration:30, range:"20–40 Sekunden", rest:0, img:"images/plank.png", text:"Waehle die Variante, die du sauber halten kannst."}
 ];
 
 let state = {plan: [], mode: "", idx: 0, setsDone: {}, workoutLog: [], timer: null, remaining: 0, timerRunning:false};
@@ -218,8 +218,8 @@ function renderCurrent(){
   if(!e){renderFinished();return;}
   const progress = Math.round((state.idx / state.plan.length)*100);
   $('progressBar').style.width = progress + '%';
-  $('flowTitle').textContent = state.mode==='full' ? 'Basisplan laeuft' : 'Minimum-Version laeuft';
-  $('stepCounter').textContent = `Uebung ${state.idx+1} von ${state.plan.length}`;
+  $('flowTitle').textContent = state.mode==='full' ? 'Basisplan läuft' : 'Minimum-Version läuft';
+  $('stepCounter').textContent = `Übung ${state.idx+1} von ${state.plan.length}`;
   let action = '';
   if(e.type==='timer') action = timerHtml(e.duration, 'Timer starten');
   else if(e.type==='hold') action = setHoldHtml(e);
@@ -234,8 +234,8 @@ function renderCurrent(){
     <div id="actionArea">${action}</div>
     <div id="pauseBox" class="pause-box"></div>
     <div class="controls">
-      <button class="btn-light" onclick="prevExercise()">Zurueck</button>
-      <button class="btn-secondary" onclick="skipExercise()">Uebung ueberspringen</button>
+      <button class="btn-light" onclick="prevExercise()">Zurück</button>
+      <button class="btn-secondary" onclick="skipExercise()">Übung überspringen</button>
     </div>`;
 }
 function timerHtml(sec, label){
@@ -281,14 +281,14 @@ function showPause(sec, autoNext){
   const pb = $('pauseBox'); if(!pb) return; if(sec<=0) return; pb.classList.add('active'); pb.innerHTML = `Pause: <strong id="pauseDisplay">${formatTime(sec)}</strong>`; let rem = sec; clearInterval(state.pauseTimer); state.pauseTimer = setInterval(()=>{ rem--; const el = $('pauseDisplay'); if(el) el.textContent = formatTime(rem); if(rem<=0){ clearInterval(state.pauseTimer); if(autoNext) nextExercise(); } },1000);
 }
 function showPauseThenNext(sec){
-  if(sec>0){ $('actionArea').innerHTML = `<div class="timer-box"><div class="small">Pause vor der naechsten Uebung</div><div class="timer" id="pauseDisplay">${formatTime(sec)}</div><button class="btn-primary" onclick="nextExercise()">Pause ueberspringen</button></div>`; let rem=sec; clearInterval(state.pauseTimer); state.pauseTimer=setInterval(()=>{ rem--; const el=$('pauseDisplay'); if(el) el.textContent=formatTime(rem); if(rem<=0){clearInterval(state.pauseTimer); nextExercise();} },1000); } else nextExercise();
+  if(sec>0){ $('actionArea').innerHTML = `<div class="timer-box"><div class="small">Pause vor der nächsten Übung</div><div class="timer" id="pauseDisplay">${formatTime(sec)}</div><button class="btn-primary" onclick="nextExercise()">Pause überspringen</button></div>`; let rem=sec; clearInterval(state.pauseTimer); state.pauseTimer=setInterval(()=>{ rem--; const el=$('pauseDisplay'); if(el) el.textContent=formatTime(rem); if(rem<=0){clearInterval(state.pauseTimer); nextExercise();} },1000); } else nextExercise();
 }
 function nextExercise(){stopTimer(); clearInterval(state.pauseTimer); state.idx++; renderCurrent();}
 function prevExercise(){if(state.idx>0){stopTimer(); clearInterval(state.pauseTimer); state.idx--; renderCurrent();}}
 function skipExercise(){state.workoutLog.push({exercise: current().name, skipped:true, time:new Date().toISOString()}); nextExercise();}
-function renderFinished(){ $('progressBar').style.width = '100%'; $('stepCounter').textContent = 'abgeschlossen'; $('currentExercise').innerHTML = `<h2 class="exercise-name">Training abgeschlossen</h2><p class="explain">Stark. Speichere das Training, damit du spaeter deinen Verlauf sehen kannst.</p><div class="controls"><button class="btn-primary" onclick="saveWorkout()">Training speichern</button><button class="btn-light" onclick="switchTab('start')">Zur Startseite</button></div>`; }
+function renderFinished(){ $('progressBar').style.width = '100%'; $('stepCounter').textContent = 'abgeschlossen'; $('currentExercise').innerHTML = `<h2 class="exercise-name">Training abgeschlossen</h2><p class="explain">Stark. Speichere das Training, damit du später deinen Verlauf sehen kannst.</p><div class="controls"><button class="btn-primary" onclick="saveWorkout()">Training speichern</button><button class="btn-light" onclick="switchTab('start')">Zur Startseite</button></div>`; }
 function saveWorkout(){ const history = JSON.parse(localStorage.getItem('workoutHistory') || '[]'); history.unshift({date:new Date().toISOString(), mode:state.mode, log:state.workoutLog}); localStorage.setItem('workoutHistory', JSON.stringify(history.slice(0,50))); renderHistory(); switchTab('history'); }
-function renderHistory(){ const history = JSON.parse(localStorage.getItem('workoutHistory') || '[]'); if(!history.length){ $('historyList').innerHTML = `<p class="small">Noch kein Training gespeichert.</p>`; return; } $('historyList').innerHTML = history.map(h=>{ const d = new Date(h.date); const done = h.log.filter(x=>!x.skipped).length; const skipped = h.log.filter(x=>x.skipped).length; return `<div class="history-item"><strong>${d.toLocaleDateString('de-DE')} - ${d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}</strong><div class="small">${h.mode==='full'?'Basisplan':'Minimum-Version'} - ${done} Eintraege - ${skipped} uebersprungen</div></div>`; }).join(''); }
+function renderHistory(){ const history = JSON.parse(localStorage.getItem('workoutHistory') || '[]'); if(!history.length){ $('historyList').innerHTML = `<p class="small">Noch kein Training gespeichert.</p>`; return; } $('historyList').innerHTML = history.map(h=>{ const d = new Date(h.date); const done = h.log.filter(x=>!x.skipped).length; const skipped = h.log.filter(x=>x.skipped).length; return `<div class="history-item"><strong>${d.toLocaleDateString('de-DE')} - ${d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}</strong><div class="small">${h.mode==='full'?'Basisplan':'Minimum-Version'} - ${done} Einträge - ${skipped} uebersprungen</div></div>`; }).join(''); }
 function clearHistory(){ localStorage.removeItem('workoutHistory'); renderHistory(); }
 function formatTime(sec){ sec = Math.max(0, Math.floor(sec)); const m = Math.floor(sec/60); const s = sec%60; return `${m}:${String(s).padStart(2,'0')}`; }
 function startExerciseTimer(sec){ state.remaining = sec; const display = $('timerDisplay'); if(display) display.textContent = formatTime(state.remaining); clearInterval(state.timer); state.timer = setInterval(()=>{ state.remaining--; if(display) display.textContent = formatTime(state.remaining); if(state.remaining<=0){ stopTimer(); } },1000); }
