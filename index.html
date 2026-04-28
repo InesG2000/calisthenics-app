@@ -22,15 +22,15 @@
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Arial,sans-serif}
     body{min-height:100vh}
-    .app{max-width:900px;margin:0 auto;padding:18px 14px 32px}
-    header{background:linear-gradient(135deg,var(--blue2),var(--blue));color:white;border-radius:26px;padding:22px 18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-    header:after{content:"";position:absolute;right:-45px;top:-55px;width:180px;height:180px;border-radius:999px;background:rgba(255,255,255,.12)}
-    h1{font-size:28px;line-height:1.05;margin:0 0 8px;font-weight:900;letter-spacing:-.03em}
-    .subtitle{font-size:15px;line-height:1.4;margin:0;color:rgba(255,255,255,.88)}
-    .topbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-    .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:8px 11px;font-size:13px}
-    .tabs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:14px 0}
-    .tab{border:1px solid var(--border);background:var(--card);border-radius:16px;padding:12px 10px;font-weight:800;color:var(--muted);cursor:pointer}
+    .app{max-width:900px;margin:0 auto;padding:12px 12px 28px}
+    header{background:linear-gradient(135deg,var(--blue2),var(--blue));color:white;border-radius:18px;padding:10px 12px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    header:after{content:"";position:absolute;right:-35px;top:-45px;width:105px;height:105px;border-radius:999px;background:rgba(255,255,255,.08)}
+    h1{font-size:21px;line-height:1.05;margin:0 0 4px;font-weight:900;letter-spacing:-.03em}
+    .subtitle{font-size:12px;line-height:1.3;margin:0;color:rgba(255,255,255,.86)}
+    .topbar{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+    .pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:4px 7px;font-size:11px}
+    .tabs{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:7px;margin:10px 0}
+    .tab{border:1px solid var(--border);background:var(--card);border-radius:14px;padding:10px 8px;font-weight:800;color:var(--muted);cursor:pointer}
     .tab.active{background:#e8efff;color:var(--blue);border-color:#adc2ff}
     .section{display:none}
     .section.active{display:block}
@@ -73,10 +73,33 @@
     .pause-box{background:#fff7ed;border:1px solid #fedf89;color:#7a2e0e;border-radius:18px;padding:12px;margin:12px 0;display:none}
     .pause-box.active{display:block}
     .history-item{border:1px solid var(--border);border-radius:16px;background:white;padding:12px;margin:8px 0}
+
+
+    .today-list{display:grid;gap:10px;margin-top:10px}
+    .today-empty{background:#f9fafb;border:1px solid #eaecf0;border-radius:16px;padding:12px;color:#667085}
+    .today-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .today-title{font-weight:950;font-size:20px;margin-bottom:6px}
+
+    .calendar-grid{display:grid;gap:10px;margin-top:12px}
+    .day-card{border:1px solid var(--border);border-radius:18px;background:#fff;padding:13px;display:grid;gap:8px}
+    .day-card.today{border-color:#2258e6;background:#f5f8ff;box-shadow:0 10px 24px rgba(34,88,230,.10)}
+    .day-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .day-name{font-weight:950;font-size:18px}
+    .today-badge{display:none;background:#2258e6;color:#fff;border-radius:999px;padding:5px 8px;font-size:12px;font-weight:900}
+    .day-card.today .today-badge{display:inline-block}
+    .task{display:flex;gap:9px;align-items:flex-start;background:#f9fafb;border:1px solid #eaecf0;border-radius:14px;padding:10px}
+    .task-time{font-weight:900;color:#2258e6;min-width:68px}
+    .task-main{font-weight:850}
+    .task-note{font-size:13px;color:#667085;margin-top:2px;line-height:1.35}
+    .intensity{display:inline-block;border-radius:999px;padding:4px 8px;font-size:12px;font-weight:900;margin-top:6px}
+    .light{background:#ecfdf3;color:#067647}
+    .medium{background:#fff7ed;color:#b54708}
+    .hard{background:#eef2ff;color:#2258e6}
+
     .footer-note{text-align:center;color:var(--muted);font-size:12px;margin-top:18px}
     @media (min-width:720px){
       .mode-card{grid-template-columns:1fr 1fr}
-      h1{font-size:36px}
+      h1{font-size:26px}
       .exercise-name{font-size:38px}
     }
   </style>
@@ -96,11 +119,21 @@
 
   <nav class="tabs">
     <button class="tab active" data-tab="start">Start</button>
+    <button class="tab" data-tab="calendar">Kalender</button>
     <button class="tab" data-tab="training">Training</button>
     <button class="tab" data-tab="history">Verlauf</button>
   </nav>
 
   <section id="start" class="section active">
+
+    <div class="card today-start-card">
+      <div style="display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:8px">
+        <h2 style="margin:0">Heute</h2>
+        <button class="btn-light" onclick="switchTab('calendar')">Wochenkalender</button>
+      </div>
+      <div id="todaySummary"></div>
+    </div>
+
     <div class="card">
       <h2 style="margin:0 0 8px">Training auswählen</h2>
       <p class="small">Für Dienstag, Freitag und Sonntag ist derselbe Basisplan hinterlegt. Die Minimum-Version ist für Tage gedacht, an denen wenig Zeit oder Energie da ist.</p>
@@ -125,6 +158,15 @@
     <div class="card">
       <h2 style="margin:0 0 8px">Übersicht Basisplan</h2>
       <div id="overview" class="exercise-list"></div>
+    </div>
+  </section>
+
+
+  <section id="calendar" class="section">
+    <div class="card">
+      <h2 style="margin:0 0 8px">Wochenkalender</h2>
+      <p class="small">Der Kalender zeigt dir, was morgens und abends geplant ist. Mittwoch ist bewusst leichter, weil Dienstag und Mittwoch direkt hintereinander liegen.</p>
+      <div id="calendarGrid" class="calendar-grid"></div>
     </div>
   </section>
 
@@ -155,7 +197,7 @@
     </div>
   </section>
 
-  <p class="footer-note">Version 2.1 · mit Übungsbildern · persönlicher Trainingsflow</p>
+  <p class="footer-note">Version 6.0 · sehr kompakter Header · Startseite mit heutiger Planung · Wochenkalender</p>
 </div>
 
 <script>
@@ -294,7 +336,124 @@ function formatTime(sec){ sec = Math.max(0, Math.floor(sec)); const m = Math.flo
 function startExerciseTimer(sec){ state.remaining = sec; const display = $('timerDisplay'); if(display) display.textContent = formatTime(state.remaining); clearInterval(state.timer); state.timer = setInterval(()=>{ state.remaining--; if(display) display.textContent = formatTime(state.remaining); if(state.remaining<=0){ stopTimer(); } },1000); }
 function startSetTimer(i, sec){ state.remaining = sec; const display = $(`timerDisplay_${i}`); if(display) display.textContent = formatTime(state.remaining); clearInterval(state.timer); state.timer = setInterval(()=>{ state.remaining--; if(display) display.textContent = formatTime(state.remaining); if(state.remaining<=0){ stopTimer(); } },1000); }
 function stopTimer(){ clearInterval(state.timer); state.timerRunning=false; }
-renderOverview(); renderHistory();
+
+const weeklySchedule = [
+  {
+    day: "Montag", jsDay: 1,
+    tasks: [
+      {time:"morgens", title:"Spagat-Mobility", note:"15–20 Minuten locker bis mittel. Kein Maximalversuch.", level:"medium", levelText:"moderat"},
+      {time:"abends", title:"Pilates", note:"Stabilität, Körperspannung und kontrollierte Bewegungen.", level:"light", levelText:"leicht bis mittel"}
+    ]
+  },
+  {
+    day: "Dienstag", jsDay: 2,
+    tasks: [
+      {time:"morgens", title:"Calisthenics Basisplan", note:"Normales Krafttraining: Klimmzug-Vorbereitung, Liegestütze, Rudern, Beine, Core.", level:"hard", levelText:"normal"},
+      {time:"abends", title:"Dehnen / Spagat", note:"10–20 Minuten locker bis mittel. Nach dem Workout nicht maximal tief gehen.", level:"medium", levelText:"moderat"}
+    ],
+    action:"full"
+  },
+  {
+    day: "Mittwoch", jsDay: 3,
+    tasks: [
+      {time:"morgens", title:"Calisthenics leichter", note:"Technikfokus: ca. 2 Sätze statt 3 bei den Hauptübungen. Sauber statt hart.", level:"medium", levelText:"leichter"},
+      {time:"abends", title:"Leichtes Dehnen", note:"Nur locker bewegen, Hüfte und Beine entspannen. Keine intensive Spagat-Einheit.", level:"light", levelText:"leicht"}
+    ],
+    action:"minimum"
+  },
+  {
+    day: "Donnerstag", jsDay: 4,
+    tasks: [
+      {time:"abends", title:"Showtanz", note:"Zählt als eigene Belastung. Kein zusätzliches hartes Dehnen nötig.", level:"medium", levelText:"normal"}
+    ]
+  },
+  {
+    day: "Freitag", jsDay: 5,
+    tasks: [
+      {time:"morgens", title:"Calisthenics Basisplan", note:"Normales Krafttraining. Gute Einheit für saubere Progression.", level:"hard", levelText:"normal"},
+      {time:"abends", title:"Dehnen / Spagat", note:"Beste Einheit für etwas intensiveres Spagat-Training, aber maximal 6–7/10.", level:"hard", levelText:"intensiver"}
+    ],
+    action:"full"
+  },
+  {
+    day: "Samstag", jsDay: 6,
+    tasks: [
+      {time:"optional", title:"Ruhetag oder Mobility", note:"Wenn du dich gut fühlst: 15–25 Minuten Dehnen. Sonst komplett frei.", level:"light", levelText:"optional"}
+    ]
+  },
+  {
+    day: "Sonntag", jsDay: 0,
+    tasks: [
+      {time:"optional", title:"Ruhetag oder lockeres Dehnen", note:"Mindestens ein Wochenendtag sollte komplett frei bleiben.", level:"light", levelText:"optional"}
+    ]
+  }
+];
+
+
+function renderTodaySummary(){
+  const box = $("todaySummary");
+  if(!box) return;
+  const today = new Date().getDay();
+  const day = weeklySchedule.find(d => d.jsDay === today);
+  if(!day){
+    box.innerHTML = `<div class="today-empty">Für heute ist nichts hinterlegt.</div>`;
+    return;
+  }
+  const tasks = day.tasks.map(t => `
+    <div class="task">
+      <div class="task-time">${t.time}</div>
+      <div>
+        <div class="task-main">${t.title}</div>
+        <div class="task-note">${t.note}</div>
+        <span class="intensity ${t.level}">${t.levelText}</span>
+      </div>
+    </div>`).join("");
+
+  let actions = "";
+  if(day.action === "full"){
+    actions = `<button class="btn-primary" onclick="startWorkout('full')">Heutiges Training starten</button>`;
+  } else if(day.action === "minimum"){
+    actions = `<button class="btn-primary" onclick="startWorkout('minimum')">Leichte Version starten</button>`;
+  }
+
+  box.innerHTML = `
+    <div class="today-title">${day.day}</div>
+    <div class="today-list">${tasks}</div>
+    <div class="today-actions">
+      ${actions}
+      <button class="btn-secondary" onclick="switchTab('calendar')">Ganze Woche ansehen</button>
+    </div>`;
+}
+
+function renderCalendar(){
+  const today = new Date().getDay();
+  const grid = $("calendarGrid");
+  if(!grid) return;
+  grid.innerHTML = weeklySchedule.map(d => {
+    const isToday = d.jsDay === today;
+    const tasks = d.tasks.map(t => `
+      <div class="task">
+        <div class="task-time">${t.time}</div>
+        <div>
+          <div class="task-main">${t.title}</div>
+          <div class="task-note">${t.note}</div>
+          <span class="intensity ${t.level}">${t.levelText}</span>
+        </div>
+      </div>`).join("");
+    const action = d.action ? `<button class="btn-secondary" onclick="startWorkout('${d.action}')">${d.action === "full" ? "Training starten" : "leichte Version starten"}</button>` : "";
+    return `
+      <div class="day-card ${isToday ? "today" : ""}">
+        <div class="day-head">
+          <div class="day-name">${d.day}</div>
+          <span class="today-badge">Heute</span>
+        </div>
+        ${tasks}
+        ${action}
+      </div>`;
+  }).join("");
+}
+
+renderOverview(); renderHistory(); renderCalendar(); renderTodaySummary();
 </script>
 </body>
 </html>
