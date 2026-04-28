@@ -1,0 +1,1 @@
+Oeffne index.html im Browser. Fuer GitHub Pages oder Netlify den kompletten Ordner inklusive images hochladen.
